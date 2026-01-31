@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk - your.i scent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="includes/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Katalog Parfum</h2>
+                <p>Jelajahi koleksi lengkap parfum decant premium kami</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Semua Produk Kami</h2>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Load JS files -->
+    <script src="includes/script.js"></script>
+    <script src="includes/products.js"></script>
+    
+    <script>
+        function loadHTML(id, path) {
+            fetch(path).then(r => r.text()).then(data => {
+                document.getElementById(id).innerHTML = data;
+                if (id === 'header-container') document.dispatchEvent(new CustomEvent('headerLoaded'));
+            }).catch(e => console.error('Error:', e));
+        }
+        loadHTML('header-container', 'includes/header.html');
+        loadHTML('footer-container', 'includes/footer.html');
+    </script>
+</body>
+</html>

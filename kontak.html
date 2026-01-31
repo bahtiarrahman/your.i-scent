@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - your.i scent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="includes/style.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Hubungi Kami</h2>
+                <p>Ada pertanyaan? Kami siap membantu Anda</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2>Cara Menghubungi Kami</h2>
+                <p style="margin-bottom: 40px;">Tim kami siap melayani Anda dengan senang hati.</p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Hubungi kami via WhatsApp untuk respon cepat</p>
+                    <a href="https://wa.me/6281234567890?text=Halo%20your.i%20scent!" target="_blank">+62 812-3456-7890</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p>Follow kami untuk update produk terbaru</p>
+                    <a href="https://www.instagram.com/your.i_scent" target="_blank">@your.i_scent</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>Kirim email untuk pertanyaan detail</p>
+                    <a href="mailto:hello@youriscent.com">hello@youriscent.com</a>
+                </div>
+            </div>
+
+            <div style="max-width: 800px; margin: 60px auto 0;">
+                <h2 style="text-align: center; margin-bottom: 30px;">FAQ</h2>
+                <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: var(--card-shadow); margin-bottom: 20px;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Bagaimana cara memesan?</h3>
+                    <p style="color: var(--light-text);">Tambahkan produk ke keranjang, lalu checkout via WhatsApp.</p>
+                </div>
+                <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: var(--card-shadow); margin-bottom: 20px;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Apakah produk 100% original?</h3>
+                    <p style="color: var(--light-text);">Ya, semua produk kami dijamin 100% original dari brand resmi.</p>
+                </div>
+                <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: var(--card-shadow); margin-bottom: 20px;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 10px;">Berapa lama pengiriman?</h3>
+                    <p style="color: var(--light-text);">2-4 hari kerja tergantung lokasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero" style="background: linear-gradient(135deg, #d4af37 0%, #c29d2e 100%);">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Siap Untuk Berbelanja?</h2>
+                <p style="margin-bottom: 30px;">Jelajahi koleksi parfum premium kami</p>
+                <a href="katalog.html" class="add-to-cart" style="display: inline-block; text-decoration: none; background: white; color: var(--primary-color);">Lihat Katalog <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="includes/script.js"></script>
+    <script>
+        function loadHTML(id, path) {
+            fetch(path).then(r => r.text()).then(data => {
+                document.getElementById(id).innerHTML = data;
+                if (id === 'header-container') document.dispatchEvent(new CustomEvent('headerLoaded'));
+            }).catch(e => console.error('Error:', e));
+        }
+        loadHTML('header-container', 'includes/header.html');
+        loadHTML('footer-container', 'includes/footer.html');
+    </script>
+</body>
+</html>

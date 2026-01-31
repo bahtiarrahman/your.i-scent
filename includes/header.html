@@ -1,0 +1,237 @@
+<header>
+    <div class="container">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-spray-can" style="font-size: 28px; color: var(--primary-color);"></i>
+                <h1>your.i <span>scent</span></h1>
+            </div>
+            
+            <!-- Hamburger Menu Icon (Mobile Only) -->
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="katalog.html">Katalog</a>
+                <a href="tentang.html">Tentang</a>
+                <a href="kontak.html">Kontak</a>
+            </nav>
+            
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobileNav">
+                <a href="index.html">Beranda</a>
+                <a href="katalog.html">Katalog</a>
+                <a href="tentang.html">Tentang</a>
+                <a href="kontak.html">Kontak</a>
+            </nav>
+            
+            <div class="nav-icons">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart" id="cartIcon"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="help-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="three-dots-menu">
+                    <div class="dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="#" id="profileLink"><i class="fas fa-user"></i> Profil</a>
+                        <a href="#" id="ordersLink"><i class="fas fa-box"></i> Pesanan Saya</a>
+                        <a href="#" id="settingsLink"><i class="fas fa-cog"></i> Pengaturan</a>
+                        <a href="kontak.html"><i class="fas fa-phone"></i> Kontak</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Modal Keranjang -->
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h3>
+            <span class="close-modal" id="closeCart">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div id="cartItems"></div>
+            <div class="cart-summary" id="cartSummary" style="display: none;">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-amount" id="cartTotal">Rp 0</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">
+                    <i class="fas fa-credit-card"></i> Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Metode Pembayaran -->
+<div class="modal" id="paymentModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fas fa-credit-card"></i> Pilih Metode Pembayaran</h3>
+            <span class="close-modal" id="closePaymentModal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="payment-options">
+                <div class="payment-option" data-method="e-wallet">
+                    <div class="payment-option-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="payment-option-details">
+                        <h4>E-Wallet</h4>
+                        <p>Bayar menggunakan GoPay, OVO, Dana, atau ShopeePay</p>
+                    </div>
+                </div>
+                
+                <div class="payment-option" data-method="bank">
+                    <div class="payment-option-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="payment-option-details">
+                        <h4>Transfer Bank</h4>
+                        <p>Transfer melalui BCA, Mandiri, BRI, atau BNI</p>
+                    </div>
+                </div>
+                
+                <div class="payment-option" data-method="qris">
+                    <div class="payment-option-icon">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <div class="payment-option-details">
+                        <h4>QRIS</h4>
+                        <p>Scan QR code untuk pembayaran yang lebih cepat</p>
+                    </div>
+                </div>
+
+                <div class="payment-option" data-method="cod">
+                    <div class="payment-option-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="payment-option-details">
+                        <h4>COD (Cash on Delivery)</h4>
+                        <p>Bayar saat barang diterima</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <button class="checkout-btn" id="confirmPayment" style="width: 100%;">Lanjutkan Pembayaran</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Detail Metode Pembayaran -->
+<div class="modal" id="paymentDetailModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="paymentDetailTitle">Detail Pembayaran</h3>
+            <span class="close-modal" id="closePaymentDetailModal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div id="paymentDetailContent">
+                <!-- Konten akan diisi berdasarkan metode pembayaran -->
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <button class="checkout-btn" id="proceedPayment" style="width: 100%;">Lakukan Pembayaran</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Konfirmasi Pembayaran -->
+<div class="modal" id="paymentConfirmationModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fas fa-check-circle"></i> Pembayaran Berhasil!</h3>
+            <span class="close-modal" id="closePaymentConfirmationModal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="payment-confirmation">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <i class="fab fa-whatsapp" style="font-size: 64px; color: #25D366;"></i>
+                </div>
+                <p id="confirmationMessage" style="text-align: center; margin-bottom: 20px;">
+                    Mohon segera kirim bukti pembayaran Anda melalui metode pembayaran yang dipilih, dan segera kirim alamat Anda ke nomor WhatsApp kami.
+                </p>
+                
+                <button class="whatsapp-confirm-btn" id="whatsappConfirmBtn">
+                    <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
+                </button>
+                
+                <p class="whatsapp-note">
+                    Klik tombol di atas untuk langsung terhubung ke WhatsApp admin dan kirim bukti pembayaran beserta alamat Anda
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Notifikasi -->
+<div class="notification notification-success" id="notification">
+    <div class="notification-content">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-text">
+            <h4>Berhasil!</h4>
+            <p id="notificationMessage">Produk ditambahkan ke keranjang</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal WhatsApp Options -->
+<div class="modal" id="whatsappModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fab fa-whatsapp"></i> Hubungi Kami via WhatsApp</h3>
+            <span class="close-modal" id="closeWhatsappModal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="whatsapp-options">
+                <a href="https://wa.me/6281234567890?text=Halo%20your.i%20scent,%20saya%20ingin%20bertanya%20tentang%20produk" class="whatsapp-option" target="_blank">
+                    <div class="whatsapp-option-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="whatsapp-option-details">
+                        <h4>Nomor Admin</h4>
+                        <p>+62 812-3456-7890 (Admin Utama)</p>
+                    </div>
+                </a>
+                
+                <a href="https://www.instagram.com/your.i_scent?igsh=MTYzN2Z3endmOGlpbw==" class="whatsapp-option" target="_blank">
+                    <div class="whatsapp-option-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="whatsapp-option-details">
+                        <h4>Instagram</h4>
+                        <p>Follow @your.i_scent untuk update produk terbaru</p>
+                    </div>
+                </a>
+            </div>
+            
+            <p style="margin-top: 20px; text-align: center; color: var(--light-text); font-size: 14px;">
+                Pilih salah satu opsi di atas untuk terhubung dengan kami
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- WhatsApp Float -->
+<div class="whatsapp-float" id="whatsappFloat">
+    <i class="fab fa-whatsapp"></i>
+</div>

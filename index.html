@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your.i scent - Parfum Decant Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="includes/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>your.i scent</h2>
+                <p>Parfum Decant Premium - Temukan Aroma Kepribadianmu</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Preview Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Koleksi Parfum Populer</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Product cards akan di-generate oleh JavaScript -->
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="katalog.html" class="add-to-cart" style="display: inline-block; text-decoration: none;">
+                    Lihat Semua Produk <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="hero" style="background: linear-gradient(135deg, #d4af37 0%, #c29d2e 100%);">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Kenapa Memilih your.i scent?</h2>
+                <p style="max-width: 800px; margin: 20px auto;">
+                    Kami menyediakan parfum decant premium dengan kualitas terbaik. Setiap aroma dipilih dengan cermat untuk memberikan pengalaman wewangian yang tak terlupakan.
+                </p>
+                <div style="margin-top: 30px;">
+                    <a href="tentang.html" class="add-to-cart" style="display: inline-block; text-decoration: none; background: white; color: var(--primary-color);">
+                        Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Load JS files -->
+    <script src="includes/script.js"></script>
+    <script src="includes/products.js"></script>
+    
+    <script>
+        // Load header and footer
+        loadHTML('header-container', 'includes/header.html');
+        loadHTML('footer-container', 'includes/footer.html');
+    </script>
+</body>
+</html>

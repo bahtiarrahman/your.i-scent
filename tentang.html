@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - your.i scent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="includes/style.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Tentang</h2>
+                <p>Misi kami adalah menghadirkan pengalaman wewangian premium untuk semua orang</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2>Cerita Kami</h2>
+                <p>your.i scent lahir dari kecintaan kami terhadap dunia parfum dan keinginan untuk membuat wewangian premium menjadi lebih terjangkau. Melalui parfum decant, kami memberikan kesempatan bagi setiap orang untuk merasakan kemewahan parfum designer dan niche dengan harga yang ramah di kantong.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>100% Original</h3>
+                    <p>Semua parfum kami dijamin original dari brand resmi.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Kualitas Terjaga</h3>
+                    <p>Setiap decant dikemas dengan botol berkualitas tinggi.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Pengiriman Aman</h3>
+                    <p>Kami mengemas setiap produk dengan bubble wrap dan kardus tebal.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Harga Terjangkau</h3>
+                    <p>Nikmati parfum premium dengan harga yang terjangkau.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Layanan Terbaik</h3>
+                    <p>Tim kami siap membantu Anda memilih parfum yang tepat.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Komunitas</h3>
+                    <p>Bergabunglah dengan komunitas pecinta parfum kami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero" style="background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Nilai-Nilai Kami</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; text-align: left;">
+                    <div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">Kejujuran</h3>
+                        <p>Kami transparan tentang produk kami dan selalu jujur kepada pelanggan.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">Kualitas</h3>
+                        <p>Kualitas produk adalah prioritas utama kami.</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">Kepuasan Pelanggan</h3>
+                        <p>Kepuasan Anda adalah kesuksesan kami.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="includes/script.js"></script>
+    <script>
+        function loadHTML(id, path) {
+            fetch(path).then(r => r.text()).then(data => {
+                document.getElementById(id).innerHTML = data;
+                if (id === 'header-container') document.dispatchEvent(new CustomEvent('headerLoaded'));
+            }).catch(e => console.error('Error:', e));
+        }
+        loadHTML('header-container', 'includes/header.html');
+        loadHTML('footer-container', 'includes/footer.html');
+    </script>
+</body>
+</html>
