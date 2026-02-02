@@ -79,12 +79,7 @@
 
     <script src="includes/script.js"></script>
     <script>
-        function loadHTML(id, path) {
-            fetch(path).then(r => r.text()).then(data => {
-                document.getElementById(id).innerHTML = data;
-                if (id === 'header-container') document.dispatchEvent(new CustomEvent('headerLoaded'));
-            }).catch(e => console.error('Error:', e));
-        }
+        // Load header and footer
         loadHTML('header-container', 'includes/header.html');
         loadHTML('footer-container', 'includes/footer.html');
     </script>

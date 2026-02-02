@@ -65,9 +65,9 @@ function renderProducts() {
     productsGrid.innerHTML = products.map(product => `
         <div class="product-card">
             <img src="${product.image}" 
-                 alt="${product.name}" 
-                 class="product-image"
-                 onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?w=400'; this.style.opacity='0.5';">
+                alt="${product.name}" 
+                class="product-image"
+                onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?w=400'; this.style.opacity='0.5';">
             <div class="product-info">
                 <div class="product-category">${product.category}</div>
                 <h3 class="product-name">${product.name}</h3>

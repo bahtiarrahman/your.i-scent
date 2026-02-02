@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - your.i scent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="includes/style.css">
+    <style>
+        .auth-wrapper {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 450px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .auth-header {
+            background: linear-gradient(135deg, #d4af37 0%, #c29d2e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .auth-header i {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .auth-header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .auth-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .auth-body {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0 15px;
+            transition: var(--transition);
+            background: white;
+        }
+
+        .input-group:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .input-group i {
+            color: var(--light-text);
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .input-group input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 15px 0;
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--text-color);
+            background: transparent;
+        }
+
+        .input-group input::placeholder {
+            color: #999;
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            color: var(--light-text);
+            margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            color: var(--primary-color);
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #d4af37 0%, #c29d2e 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            color: var(--light-text);
+            font-size: 13px;
+        }
+
+        .auth-footer {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
+        .auth-footer p {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        .auth-footer a {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-home a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+
+        .back-home a:hover {
+            opacity: 1;
+        }
+
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .auth-wrapper {
+                padding: 10px;
+            }
+
+            .auth-header {
+                padding: 30px 20px;
+            }
+
+            .auth-body {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div style="max-width: 450px; width: 100%;">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <i class="fas fa-spray-can"></i>
+                    <h1>Login</h1>
+                    <p>Masuk ke akun your.i scent</p>
+                </div>
+
+                <div class="auth-body">
+                    <div class="error-message" id="errorMessage">
+                        Error message here
+                    </div>
+
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" placeholder="Minimal 6 karakter" required>
+                                <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                            </div>
+                            <div class="forgot-password">
+                                <a href="#" id="forgotPasswordLink">Lupa password?</a>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-login">
+                            <i class="fas fa-sign-in-alt"></i> Masuk
+                        </button>
+                    </form>
+
+                    <div class="divider">
+                        <span>atau</span>
+                    </div>
+
+                    <div class="auth-footer">
+                        <p>Belum punya akun? <a href="register.html">Daftar sekarang</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="includes/script.js"></script>
+    <script src="auth.js"></script>
+    
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Forgot password
+        document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            showNotification('Fitur lupa password sedang dalam pengembangan. Silakan hubungi admin via WhatsApp.', 'info');
+        });
+
+        // Form submit
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMessage');
+            
+            // Hide error
+            errorMsg.classList.remove('show');
+            
+            // Attempt login
+            const result = login(email, password);
+            
+            if (result.success) {
+                showNotification(result.message, 'success');
+                
+                // Redirect after short delay
+                setTimeout(() => {
+                    // Check if there's a redirect URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const redirect = urlParams.get('redirect') || 'index.html';
+                    window.location.href = redirect;
+                }, 1000);
+            } else {
+                errorMsg.textContent = result.message;
+                errorMsg.classList.add('show');
+                showNotification(result.message, 'error');
+            }
+        });
+
+        // Check if already logged in
+        if (isLoggedIn()) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

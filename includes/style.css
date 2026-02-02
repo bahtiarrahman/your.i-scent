@@ -1204,4 +1204,10 @@ footer {
     .nav-icons {
         gap: 15px;
     }
+#whatsappCheckoutBtn {
+    position: relative;
+    z-index: 10; /* Pastikan tombol ini berada di atas elemen lainnya */
+}
+
+  
 }
